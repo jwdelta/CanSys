@@ -48,7 +48,7 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
 ./run_pipeline.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Database ALL -Cancer Breast
 
 #Run the CanSys tool using the somatic VCF file. Filter out unexpressed genes. Set the number of permutations to 6000.
-./run_pipeline.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -nPermSimple 8000
+./run_pipeline.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -nPermSimple 6000
 
 #Run the CanSys tool using the germline VCF file. Filter out unexpressed genes. Filter out variants with CADD scores less then 15.
 ./run_pipeline.sh -Vcf ./test/input_files/germline.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -Cutoff_CADD 15
