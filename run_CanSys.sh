@@ -71,6 +71,9 @@ annovar_Dir=/path/to/ANNOVAR/annovar
 CADD_prescored=$Pipeline_Dir/resources/CADD_GRCh38_v1.7_no_anno
 DepMap=$Pipeline_Dir/resources/DepMap_scores_23Q2/${Cancer}.txt
 
+# Specify the directory to save output files
+Save_Dir=$Pipeline_Dir/test/output_files
+
 # Create a temporary directory for execution
 Temp_ExecDir="${Pipeline_Dir}/test/$(date +%s%N${RANDOM} | sha256sum | head -c 16).tmp"
 echo "Temporary execution directory created at: ${Temp_ExecDir}"
@@ -153,23 +156,23 @@ fi
 
 # Check if GO pathway-level score file exists and move it to the outputs directory
 if [[ -e "${SampleName}.pathway_level_scores.GO.txt" ]]; then
-    mv "${SampleName}.pathway_level_scores.GO.txt" "$Pipeline_Dir/test/output_files/"
+    mv "${SampleName}.pathway_level_scores.GO.txt" "$Save_Dir"
     echo "GO pathway-level scores moved to outputs directory."
 fi
 
 if [[ -e "${SampleName}.signif.pathway_level_scores.GO.txt" ]]; then
-    mv "${SampleName}.signif.pathway_level_scores.GO.txt" "$Pipeline_Dir/test/output_files/"
+    mv "${SampleName}.signif.pathway_level_scores.GO.txt" "$Save_Dir"
     echo "Significant GO pathway-level scores moved to outputs directory."
 fi
 
 # Check if KEGG pathway-level score file exists and move it to the outputs directory
 if [[ -e "${SampleName}.pathway_level_scores.KEGG.txt" ]]; then
-    mv "${SampleName}.pathway_level_scores.KEGG.txt" "$Pipeline_Dir/test/output_files/"
+    mv "${SampleName}.pathway_level_scores.KEGG.txt" "$Save_Dir"
     echo "KEGG pathway-level scores moved to outputs directory."
 fi
 
 if [[ -e "${SampleName}.signif.pathway_level_scores.KEGG.txt" ]]; then
-    mv "${SampleName}.signif.pathway_level_scores.KEGG.txt" "$Pipeline_Dir/test/output_files/"
+    mv "${SampleName}.signif.pathway_level_scores.KEGG.txt" "$Save_Dir"
     echo "Significant KEGG pathway-level scores moved to outputs directory."
 fi
 
