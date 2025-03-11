@@ -1,2 +1,3 @@
 # CanSys
-A software tool that maps gene level alterations to GO and KEGG pathways and provide a pathway alteration score at single sample-level.
+A software tool that quantifies the contributions of germline and somatic alterations to biological pathway-level disturbances in individual cancer samples.
+
