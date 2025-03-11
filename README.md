@@ -19,5 +19,5 @@ R Packages:
 - fgsea: Fast Gene Set Enrichment Analysis tool.
 
 ## Setup
-CanSys requires no installtion. 
+CanSys requires no installation. However, users need to execute `bash download.sh` to download the necessary databases before running the CanSys tool.
 
