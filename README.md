@@ -33,6 +33,8 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
  -SampleName <name>: (Required) Name of the sample being analyzed. Used for naming output files.
  
  -Expression <path>: (Optional) Path to the gene expression file. Read count data is recommended. Plasea refer to `test/input/expression.txt` for an example.
+
+ -Output_Dir <path>: (Optional) Specifies the output directory for saving results. If not specified, files will be saved in the current working directory by default.
  
  -Database <name>: (Required) Specifies the database for pathway-level score calculation. Valid options are GO, KEGG, or ALL.
 
@@ -55,7 +57,7 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
 ```
 
 ## Outputs
-Output files will be saved in the specified outputs directory `test/output_files`. The directory can be changed by modifying the `Save_Dir` variable in the `run_CanSys.sh` script. The output files contain detailed information across several columns, each providing specific insights into the biological pathways analyzed. Here is a brief overview of the columns included in the output files:
+Two output files will be generated for both GO and KEGG analyses: one containing the complete results and the other including only the significant results with Benjamini-Hochberg (BH) adjusted P-values < 0.25. The output files contain detailed information across several columns, each providing specific insights into the biological pathways analyzed. Here is a brief overview of the columns included in the output files:
  - goid/entry: This column contains the ID of the biological pathway.
  - Name: Lists the names of the biological pathways.
  - N: Represents the number of genes within each biological pathway.
@@ -64,8 +66,8 @@ Output files will be saved in the specified outputs directory `test/output_files
  - NES: Refers to the normalized enrichment score.
  - GeneScoreMean: Refers to the average gene-level impact scores in each biological pathway. 
  - PDS: Refers to the pathway disturbance score (CanSys score).
- - pval: Contains the p-values.
- - padj: Contains the p-values adjusted using the Benjamini-Hochberg (BH) method.
+ - pval: Contains the P-values.
+ - padj: Contains the P-values adjusted using the Benjamini-Hochberg (BH) method.
  - Affected Genes: Lists the genes that have a gene-level impact score greater than 0 in each biological pathway.
 
 ## Citing this work
