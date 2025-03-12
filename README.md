@@ -1,5 +1,5 @@
 # CanSys
-CanSys is tool that quantifies the contributions of germline and somatic alterations to biological pathway-level disturbances in individual cancer samples. It annotates Variant Call Format (VCF) files with Combined Annotation Dependent Depletion (CADD) scores, calculates gene-level impact scores using CADD and Cancer Dependency Map (DepMap) scores, and maps affected genes onto biological pathways using specified databases (GO and KEGG).
+CanSys is tool that quantifies the contributions of germline and somatic alterations to biological pathway-level disturbances in individual cancer samples. It annotates Variant Call Format (VCF) files with Combined Annotation Dependent Depletion (CADD) scores, calculates gene-level impact scores using CADD and Cancer Dependency Map (DepMap) scores, and maps affected genes onto biological pathways using specified databases (GO and KEGG). We also offer a web-based application [cansysplot](https://cansysplot.com/) that allows users to analyze and interactively visualize pathway disturbances in networks. Additionally, the application facilitates the visualization of disturbance networks using data derived from The Cancer Genome Atlas (TCGA).
 
 ## Requirements
 Before running this script, ensure the following software packages and dependencies are installed in your environment.
