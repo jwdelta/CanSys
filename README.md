@@ -23,7 +23,7 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
 
 ## Usage
 ```shell
-./run_pipeline.sh [OPTIONS]
+./run_CanSys.sh [OPTIONS]
 ```
 
 **Options**:
@@ -45,17 +45,17 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
 **Examples**:
 ```shell
 #Run the CanSys tool using the somatic VCF file. Not filter out unexpressed genes.
-./run_pipeline.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Database ALL -Cancer Breast
+./run_CanSys.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Database ALL -Cancer Breast
 
 #Run the CanSys tool using the somatic VCF file. Filter out unexpressed genes. Set the number of permutations to 6000.
-./run_pipeline.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -nPermSimple 6000
+./run_CanSys.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -nPermSimple 6000
 
 #Run the CanSys tool using the germline VCF file. Filter out unexpressed genes. Filter out variants with CADD scores less then 15.
-./run_pipeline.sh -Vcf ./test/input_files/germline.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -Cutoff_CADD 15
+./run_CanSys.sh -Vcf ./test/input_files/germline.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -Cutoff_CADD 15
 ```
 
 ## Outputs
-Output files will be saved in the specified outputs directory (`test/output_files`). The directory can be changed by modifying the `Save_Dir` variable in the `run_CanSys.sh` script. The output files contain detailed information across several columns, each providing specific insights into the biological pathways analyzed. Here is a brief overview of the columns included in the output files:
+Output files will be saved in the specified outputs directory `test/output_files`. The directory can be changed by modifying the `Save_Dir` variable in the `run_CanSys.sh` script. The output files contain detailed information across several columns, each providing specific insights into the biological pathways analyzed. Here is a brief overview of the columns included in the output files:
  - goid/entry: This column contains the ID of the biological pathway.
  - Name: Lists the names of the biological pathways.
  - N: Represents the number of genes within each biological pathway.
