@@ -47,13 +47,13 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
 **Examples**:
 ```shell
 #Run the CanSys tool using the somatic VCF file. Not filter out unexpressed genes.
-./run_CanSys.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Database ALL -Cancer Breast
+./run_CanSys.sh -Vcf /path/to/test/input_files/somatic.vcf -SampleName example -Output_Dir /path/to/test/output_files -Database ALL -Cancer Breast
 
 #Run the CanSys tool using the somatic VCF file. Filter out unexpressed genes. Set the number of permutations to 6000.
-./run_CanSys.sh -Vcf ./test/input_files/somatic.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -nPermSimple 6000
+./run_CanSys.sh -Vcf /path/to/test/input_files/somatic.vcf -SampleName example -Expression /path/to/test/input_files/expression.txt -Output_Dir /path/to/test/output_files -Database ALL -Cancer Breast -nPermSimple 6000
 
 #Run the CanSys tool using the germline VCF file. Filter out unexpressed genes. Filter out variants with CADD scores less then 15.
-./run_CanSys.sh -Vcf ./test/input_files/germline.vcf -SampleName example -Expression ./test/input_files/expression.txt -Database ALL -Cancer Breast -Cutoff_CADD 15
+./run_CanSys.sh -Vcf /path/to/test/input_files/germline.vcf -SampleName example -Expression /path/to/test/input_files/expression.txt -Output_Dir /path/to/test/output_files -Database ALL -Cancer Breast -Cutoff_CADD 15
 ```
 
 ## Outputs
@@ -71,7 +71,7 @@ Two output files will be generated for both GO and KEGG analyses: one containing
  - Affected Genes: Lists the genes that have a gene-level impact score greater than 0 in each biological pathway.
 
 ## Citing this work
-If you use the CanSys tool in your research, please cite: Common and rare germline variants together with somatic mutations alter the integrity of cancer hallmark regulatory networks. (Currently under submission)
+If you use the CanSys tool or its web-based application in your research, please cite: Common and rare germline variants together with somatic mutations alter the integrity of cancer hallmark regulatory networks. (Currently under submission)
 
 ## Acknowledgments
 We would like to express our sincere gratitude to the developers of CADD, DepMap, and all other algorithms and dependencies integrated into our tool.
