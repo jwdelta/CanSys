@@ -14,7 +14,7 @@ Before running this script, ensure the following software packages and dependenc
 
 **R Packages:**
 - ANNOVAR: Utilized for annotating which genes are associated with variations. Please also download the gene-based annotation file "refGene" (build: hg38).
-- rGMMtest: Utilized for fitting Gaussian Mixture Model (GMM) to 1D data and assigning data points to individual Gaussian components. (This R package is currently under submission.)
+- rGMMtest: Utilized for fitting Gaussian Mixture Model (GMM) to 1D data and assigning data points to individual Gaussian components. (This R package is accompanied by a manuscript currently under submission)
 - optparse: Facilitates the parsing of command-line options in R scripts.
 - fgsea: Fast Gene Set Enrichment Analysis tool.
 
