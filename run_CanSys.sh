@@ -16,7 +16,7 @@
 Vcf=""
 SampleName=""
 Expression=""
-Output_Dir="./"
+Output_Dir=""
 Database=""
 Cancer=""
 Cutoff_CADD="0"
@@ -72,6 +72,11 @@ annovar_Dir=/path/to/ANNOVAR/annovar
 # Resources
 CADD_prescored=$Pipeline_Dir/resources/CADD_GRCh38_v1.7_no_anno
 DepMap=$Pipeline_Dir/resources/DepMap_scores_23Q2/${Cancer}.txt
+
+# Specifies the output directory for saving results
+if [[ -z "$Output_Dir" ]]; then
+    Output_Dir=$Pipeline_Dir
+fi
 
 # Create a temporary directory for execution
 Temp_ExecDir="${Pipeline_Dir}/test/$(date +%s%N${RANDOM} | sha256sum | head -c 16).tmp"
