@@ -57,7 +57,7 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
 ```
 
 ## Outputs
-Two output files will be generated for both GO and KEGG analyses: one containing the complete results and the other including only the significant results with Benjamini-Hochberg (BH) adjusted P-values < 0.25. The output files contain detailed information across several columns, each providing specific insights into the biological pathways analyzed. Here is a brief overview of the columns included in the output files:
+Two output files will be generated for both GO and KEGG analyses: one containing the complete results and the other including only the significant results with Benjamini-Hochberg (BH) adjusted *P*-values < 0.25. The output files contain detailed information across several columns, each providing specific insights into the biological pathways analyzed. Here is a brief overview of the columns included in the output files:
  - goid/entry: This column contains the ID of the biological pathway.
  - Name: Lists the names of the biological pathways.
  - N: Represents the number of genes within each biological pathway.
