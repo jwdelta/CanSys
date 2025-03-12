@@ -66,8 +66,8 @@ Two output files will be generated for both GO and KEGG analyses: one containing
  - NES: Refers to the normalized enrichment score.
  - GeneScoreMean: Refers to the average gene-level impact scores in each biological pathway. 
  - PDS: Refers to the pathway disturbance score (CanSys score).
- - pval: Contains the P-values.
- - padj: Contains the P-values adjusted using the Benjamini-Hochberg (BH) method.
+ - pval: Contains the *P*-values.
+ - padj: Contains the *P*-values adjusted using the Benjamini-Hochberg (BH) method.
  - Affected Genes: Lists the genes that have a gene-level impact score greater than 0 in each biological pathway.
 
 ## Citing this work
