@@ -42,7 +42,7 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
  
  -Cutoff_CADD <numeric>: (Optional) Cutoff value for CADD scores. Default: 0.
  
- -nPermSimple <numeric>: (Optional) Number of permutations used in the permutation test to estimate P-values. Default: 1000.
+ -nPermSimple <numeric>: (Optional) Number of permutations used in the permutation test to estimate *P*-values. Default: 1000.
 
 **Examples**:
 ```shell
