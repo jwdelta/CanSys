@@ -19,7 +19,7 @@ Before running this script, ensure the following software packages and dependenc
 - fgsea: Fast Gene Set Enrichment Analysis tool.
 
 ## Setup
-CanSys requires no installation. However, users must execute `bash download.sh` to download the required databases prior to running the CanSys tool. Additionally, users need to specify the ANNOVAR directory path by modifying the `annovar_Dir` variable in the `run_CanSys.sh` script.
+CanSys requires no installation. However, users must execute `bash download.sh` to download the required databases prior to running the CanSys tool. This process may take ～2 hours to complete, and requires ～83GB of available storage. Additionally, users need to specify the ANNOVAR directory path by modifying the `annovar_Dir` variable in the `run_CanSys.sh` script.
 
 ## Usage
 ```shell
