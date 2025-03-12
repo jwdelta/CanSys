@@ -16,19 +16,21 @@
 Vcf=""
 SampleName=""
 Expression=""
+Output_Dir="./"
 Database=""
 Cancer=""
 Cutoff_CADD="0"
 nPermSimple="1000"
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -Vcf) Vcf="$2"; shift; shift ;;
-	-SampleName) SampleName="$2"; shift; shift ;;
-	-Expression) Expression="$2"; shift; shift ;;
-        -Database) Database="$2"; shift; shift ;;
-	-Cancer) Cancer="$2"; shift; shift ;;
-	-Cutoff_CADD) Cutoff_CADD="$2"; shift; shift ;;
-	-nPermSimple) nPermSimple="$2"; shift; shift ;;
+	   -Vcf) Vcf="$2"; shift; shift ;;
+	   -SampleName) SampleName="$2"; shift; shift ;;
+	   -Expression) Expression="$2"; shift; shift ;;
+	   -Output_Dir) Output_Dir="$2"; shift; shift ;;
+	   -Database) Database="$2"; shift; shift ;;
+	   -Cancer) Cancer="$2"; shift; shift ;;
+	   -Cutoff_CADD) Cutoff_CADD="$2"; shift; shift ;;
+	   -nPermSimple) nPermSimple="$2"; shift; shift ;;
 	*) echo "Unknown option: $1"; exit 1 ;;
     esac
 done
@@ -62,7 +64,7 @@ fi
 
 
 # Specify the directory containing the pipeline scripts and resources
-Pipeline_Dir=./CanSys
+Pipeline_Dir=$(pwd)
 
 # Specify the download directory for ANNOVAR
 annovar_Dir=/path/to/ANNOVAR/annovar
@@ -70,9 +72,6 @@ annovar_Dir=/path/to/ANNOVAR/annovar
 # Resources
 CADD_prescored=$Pipeline_Dir/resources/CADD_GRCh38_v1.7_no_anno
 DepMap=$Pipeline_Dir/resources/DepMap_scores_23Q2/${Cancer}.txt
-
-# Specify the directory to save output files
-Save_Dir=$Pipeline_Dir/test/output_files
 
 # Create a temporary directory for execution
 Temp_ExecDir="${Pipeline_Dir}/test/$(date +%s%N${RANDOM} | sha256sum | head -c 16).tmp"
@@ -155,24 +154,25 @@ fi
 
 
 # Check if GO pathway-level score file exists and move it to the outputs directory
+mkdir -p Output_Dir
 if [[ -e "${SampleName}.pathway_level_scores.GO.txt" ]]; then
-    mv "${SampleName}.pathway_level_scores.GO.txt" "$Save_Dir"
+    mv "${SampleName}.pathway_level_scores.GO.txt" "$Output_Dir"
     echo "GO pathway-level scores moved to outputs directory."
 fi
 
 if [[ -e "${SampleName}.signif.pathway_level_scores.GO.txt" ]]; then
-    mv "${SampleName}.signif.pathway_level_scores.GO.txt" "$Save_Dir"
+    mv "${SampleName}.signif.pathway_level_scores.GO.txt" "$Output_Dir"
     echo "Significant GO pathway-level scores moved to outputs directory."
 fi
 
 # Check if KEGG pathway-level score file exists and move it to the outputs directory
 if [[ -e "${SampleName}.pathway_level_scores.KEGG.txt" ]]; then
-    mv "${SampleName}.pathway_level_scores.KEGG.txt" "$Save_Dir"
+    mv "${SampleName}.pathway_level_scores.KEGG.txt" "$Output_Dir"
     echo "KEGG pathway-level scores moved to outputs directory."
 fi
 
 if [[ -e "${SampleName}.signif.pathway_level_scores.KEGG.txt" ]]; then
-    mv "${SampleName}.signif.pathway_level_scores.KEGG.txt" "$Save_Dir"
+    mv "${SampleName}.signif.pathway_level_scores.KEGG.txt" "$Output_Dir"
     echo "Significant KEGG pathway-level scores moved to outputs directory."
 fi
 
