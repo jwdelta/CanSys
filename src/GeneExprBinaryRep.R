@@ -1,5 +1,5 @@
 # Load Required Library
-library(rGMMtest)
+library(dpGMM)
 
 # Parse Command Line Arguments
 argv <- commandArgs(TRUE)
