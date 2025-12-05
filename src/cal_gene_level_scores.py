@@ -18,6 +18,7 @@ def get_variant_level_AF_and_CADD(input_vcf, cutoff_CADD):
     
     Args:
         input_vcf (str): Path to the VCF file.
+        cutoff_CADD (float): CADD score cutoff (PHRED-scaled / 100 in the VCF file).
 
     Returns:
         dict: A dictionary with variant identifiers as keys and allele frequency, CADD scores as values.
@@ -33,16 +34,35 @@ def get_variant_level_AF_and_CADD(input_vcf, cutoff_CADD):
             elif not line.startswith('#'):
                 parts = line.strip().split('\t')
                 INFO = {k: v for k, v in (item.split('=') for item in parts[INFO_index].split(';') if '=' in item)}
-                FORMAT_parts = parts[FORMAT_index+1].split(':')
-                FORMAT_dict = {fmt: val for fmt, val in zip(parts[FORMAT_index].split(':'), FORMAT_parts)}
-                AD_str = FORMAT_dict.get('AD', '0')
-                DP_str = FORMAT_dict.get('DP', '0')
-                AD_list = [int(x) for x in AD_str.split(',')]
-                if len(AD_list) > 1:
-                    DP = sum(AD_list)
+                # Select which sample column to use (this is not important because AFs are not used):
+                #   - If there is only one sample → use that sample
+                #   - If there are two samples (typical Normal + Tumor) → use the second sample (tumor)
+                num_samples = len(parts) - (FORMAT_index + 1)
+                if num_samples == 1:
+                    # Only one sample → use it
+                    sample_field = parts[FORMAT_index + 1]
+                elif num_samples == 2:
+                    # Two samples → use the second one (usually the tumor sample)
+                    sample_field = parts[FORMAT_index + 2]
+                FORMAT_parts = sample_field.split(':')
+                FORMAT_keys = parts[FORMAT_index].split(':')
+                FORMAT_dict = {fmt: val for fmt, val in zip(FORMAT_keys, FORMAT_parts)}
+                # If FORMAT contains no AD or DP, then directly use AF from FORMAT.
+                if ('AD' not in FORMAT_dict) and ('DP' not in FORMAT_dict):
+                    try:
+                        AF = float(FORMAT_dict.get('AF', 0))
+                    except ValueError:
+                        AF = 0.0
                 else:
-                    DP = int(DP_str)
-                AF = AD_list[-1] / DP if DP > 0 else 0
+                    AD_str = FORMAT_dict.get('AD', '0')
+                    DP_str = FORMAT_dict.get('DP', '0')
+                    AD_list = [int(x) for x in AD_str.split(',')]
+                    if len(AD_list) > 1:
+                        DP = sum(AD_list)
+                    else:
+                        DP = int(DP_str)
+                    AF = AD_list[-1] / DP if DP > 0 else 0
+
                 gene = INFO.get('Gene.refGene', '').replace('\\x3b', ';').split(';')[0]
                 if INFO['CADD_PHRED'] != '.':
                     CADD_PHRED = float(INFO.get('CADD_PHRED', '0')) / 100
