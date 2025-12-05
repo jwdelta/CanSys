@@ -13,7 +13,7 @@ Before running this script, ensure the following software packages and dependenc
 - pandas: Provides robust data structures for efficient data manipulation and analysis.
 
 **R Packages:**
-- ANNOVAR: Utilized for annotating which genes are associated with variations. Please also download the gene-based annotation file "refGene" (build: hg38).
+- ANNOVAR: Utilized for annotating which genes are associated with variations. Please also download the gene-based annotation file "refGene" and filter-based annotation file "gnomad41_exome" (build: hg38).
 - dpGMM: Utilized for fitting Gaussian Mixture Model (GMM) to 1D expression data and assigning data points to individual Gaussian components.
 - optparse: Facilitates the parsing of command-line options in R scripts.
 - fgsea: Fast Gene Set Enrichment Analysis tool.
@@ -41,6 +41,10 @@ CanSys requires no installation. However, users must execute `bash download.sh` 
  -Cancer <name>: (Required) Specifies the cancer type. Valid options are Ampulla_of_Vater, Biliary_Tract, Bladder_or_Urinary_Tract, Bone, Bowel, Breast, Cervix, CNS_or_Brain, Esophagus_or_Stomach, Eye, Head_and_Neck, Kidney, Liver, Lung, Lymphoid, Myeloid, Ovary_or_Fallopian_Tube, Pancreas, Peripheral_Nervous_System, Pleura, Prostate, Skin, Soft_Tissue, Testis, Thyroid, Uterus and Vulva_or_Vagina.
  
  -Cutoff_CADD <numeric>: (Optional) Cutoff value for CADD scores. Default: 0.
+
+ -pop <name>: (Optional) Specifies the gnomAD population to be used for allele frequency filtering. Valid options are ALL (All populations combined), AFR (African/African American), AMR (Latino/Admixed American), ASJ (Ashkenazi Jewish), EAS (East Asian), FIN (Finnish), MID (Middle Eastern), NFE (Non-Finnish European), SAS(South Asian) or OTH (Other). When provided together with -Cutoff_AF_pop, variants with allele frequencies above the specified cutoff in this population will be filtered.
+ 
+-Cutoff_AF_pop <numeric>: (Optional) Allele frequency cutoff value for the selected gnomAD population. Must be used together with -pop. Variants with population-specific allele requencies greater than this threshold will be filtered.
  
  -nPermSimple <numeric>: (Optional) Number of permutations used in the permutation test to estimate *P*-values. Default: 1000.
 
@@ -71,7 +75,7 @@ Two output files will be generated for both GO and KEGG analyses: one containing
  - Affected Genes: Lists the genes that have a gene-level impact score greater than 0 in each biological pathway.
 
 ## Citing this work
-If you use the CanSys tool or its web-based application [cansysplot](https://cansysplot.com/) in your research, please cite: Common and rare germline variants together with somatic mutations alter the integrity of cancer hallmark regulatory networks. (Currently under submission)
+If you use the CanSys tool or its web-based application [cansysplot](https://cansysplot.com/) in your research, please cite: Common and rare germline variants together with somatic mutations alter the integrity of cancer hallmark regulatory networks. (Currently under review)
 
 ## Acknowledgments
 We would like to express our sincere gratitude to the developers of CADD, DepMap, and all other algorithms and dependencies integrated into our tool.
