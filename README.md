@@ -75,7 +75,7 @@ Two output files will be generated for both GO and KEGG analyses: one containing
  - Affected Genes: Lists the genes that have a gene-level impact score greater than 0 in each biological pathway.
 
 ## Citing this work
-If you use the CanSys tool or its web-based application [cansysplot](https://cansysplot.com/) in your research, please cite: Functional germline variants together with somatic mutations alter the integrity of cancer hallmark regulatory networks. (Currently under review)
+If you use the CanSys tool or its web-based application [cansysplot](https://cansysplot.com/) in your research, please cite: Dai, J., Posta, M., Marczyk, M. et al. Functional germline variants together with somatic mutations alter the integrity of cancer hallmark regulatory networks. Genome Med (2026). https://doi.org/10.1186/s13073-026-01644-8
 
 ## Acknowledgments
 We would like to express our sincere gratitude to the developers of CADD, DepMap, and all other algorithms and dependencies integrated into our tool.
